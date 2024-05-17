@@ -4,12 +4,14 @@ pub struct Cli {
     pub format: Option<PixelFormat>,
     pub quiet: bool,
     pub no_cache: bool,
+    pub is_transform: bool,
 }
 
 impl Cli {
     pub fn new() -> Self {
         let mut quiet = false;
         let mut no_cache = false;
+        let mut is_transform = false;
         let mut format = None;
         let mut args = std::env::args();
         args.next(); // skip the first argument
@@ -28,6 +30,7 @@ impl Cli {
                 },
                 "-q" | "--quiet" => quiet = true,
                 "--no-cache" => no_cache = true,
+                "--transform" => is_transform = true,
                 "-h" | "--help" => {
                     println!("swww-daemon");
                     println!();
@@ -70,6 +73,7 @@ impl Cli {
             format,
             quiet,
             no_cache,
+            is_transform,
         }
     }
 }
