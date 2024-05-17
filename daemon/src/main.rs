@@ -494,7 +494,7 @@ impl Dispatch<wl_output::WlOutput, ()> for Daemon {
             if wallpaper.has_output(proxy) {
                 match event {
                     wl_output::Event::Geometry {
-                        x, y, transform, ..
+                        y, x, transform, ..
                     } => {
                         debug!("output {} position: {x},{y}", proxy.id());
                         match transform {
